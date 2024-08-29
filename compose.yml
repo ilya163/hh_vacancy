@@ -10,7 +10,7 @@ services:
       ports:
         - "27017:27017"
       volumes:
-        - ./mongo/mongod.conf:/etc/mongod.conf
+        - ./mongod.conf:/etc/mongod.conf
         - ./volumes/mongo_data:/data/db
         - ./volumes/logs/mongo_logs:/var/log/mongodb
       command: [ "mongod", "--config", "/etc/mongod.conf" ]
