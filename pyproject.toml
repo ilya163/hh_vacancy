@@ -1,0 +1,24 @@
+[tool.poetry]
+name = "vacancy-hh"
+version = "0.1.0"
+description = ""
+authors = ["Ilya Zakonov <zacky163@mail.ru>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+aiohttp = "^3.10.5"
+fastapi = "^0.112.2"
+motor = "^3.5.1"
+python-dotenv = "^1.0.1"
+uvicorn = "^0.30.6"
+google-api-python-client = "^2.142.0"
+google-auth-httplib2 = "^0.2.0"
+google-auth-oauthlib = "^1.2.1"
+gspread = "6.1.1"
+pyyaml = "^6.0.2"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Веб-сервис для анализа вакансий</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <div class="container-filter">
+        <div class="filters">
+            <div class="dropdown">
+                <input type="text" id="filterInput" class="filter-input" placeholder="Фильтр Города..." autocomplete="off">
+                <div id="dropdown-content" class="dropdown-content">
+                    <div id="dropdownList"></div>
+                </div>
+            </div>
+
+            <button id="searchButton" class="search-button">Поиск</button>
+        </div>
+
+        <table id="resultsTable" class="results-table">
+            <thead>
+                <tr>
+                    <th>Название вакансии</th>
+                    <th>Ссылка на вакансию</th>
+                    <th>Город</th>
+                    <th>Специальность</th>
+                    <th>Размер з/п, руб</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td colspan="6" id="no-data">Нет данных</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="container-gsheets">
+            <button id="exportButton" class="export-button" data-active="0">Отправить в Google Sheets</button>
+        <div class="progress-container">
+            <div id="progress-bar" class="progress-bar"></div>
+        </div>
+        <div id="notification" class="notification hidden">This is a notification message!</div>
+    </div>
+
+    </div>
+    <script src="/static/js/script.js"></script>
+    <script src="/static/js/filters.js"></script>
+    <script src="/static/js/search.js"></script>
+
+</body>
+</html>
