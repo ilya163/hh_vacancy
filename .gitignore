@@ -1,6 +1,6 @@
 .env
 .idea
-service_account.json
+app/service_account.json
 test.py
 volumes/
 *__pycache__*

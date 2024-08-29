@@ -5,7 +5,7 @@ RUN poetry config virtualenvs.create false
 
 WORKDIR /hh
 
-COPY pyproject.toml poetry.lock service_account.json ./
+COPY pyproject.toml poetry.lock app/service_account.json ./
 RUN poetry install
 
 COPY app/ /hh/app

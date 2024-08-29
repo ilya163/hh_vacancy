@@ -1,18 +1,19 @@
 services:
   mongodb:
-    image: mongo:latest
-    container_name: mongodb
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: ${MONGO_USERNAME}
-      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_PASSWORD}
-    volumes:
-      - ./volumes/mongo_data:/data/db
-      - ./volumes/logs/mongo_logs:/var/log/mongodb
-      - ./mongod.conf:/etc/mongod.conf
-    ports:
-      - "27017:27017"
-    restart: always
-    entrypoint: sh -c "mkdir -p /var/log/mongodb && chmod -R 777 /var/log/mongodb && mongod --config /etc/mongod.conf"
+      image: mongo:7.0.12
+      container_name: mongodb
+      env_file:
+        - .env
+      environment:
+        MONGO_INITDB_ROOT_USERNAME: ${MONGO_USERNAME}
+        MONGO_INITDB_ROOT_PASSWORD: ${MONGO_PASSWORD}
+      ports:
+        - "27017:27017"
+      volumes:
+        - ./mongo/mongod.conf:/etc/mongod.conf
+        - ./volumes/mongo_data:/data/db
+        - ./volumes/logs/mongo_logs:/var/log/mongodb
+      command: [ "mongod", "--config", "/etc/mongod.conf" ]
 
 
   fastapi:
@@ -28,7 +29,6 @@ services:
     command: uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload --log-config app/core/log_config.yml
     ports:
       - "8000:8000"
-    restart: always
     depends_on:
       - mongodb
 

@@ -23,7 +23,7 @@ document.getElementById('exportButton').addEventListener('click', function() {
       })
       .then(progress_time => {
         const duration = parseInt(progress_time, 10); // Время в секундах
-        const interval_time = (duration * 1000 * 1.15) / 100; // Миллисекунды для 1% прогресса
+        const interval_time = (duration * 1000 * 1.5) / 100; // Миллисекунды для 1% прогресса
 
         interval = setInterval(function() {
             if (width >= 100) {

@@ -12,7 +12,7 @@ gsheets_routers = APIRouter()
 
 
 def initialize_client_gsheets():
-    SERVICE_ACCOUNT_FILE = 'service_account.json'
+    SERVICE_ACCOUNT_FILE = 'app/service_account.json'
     SCOPES = ['https://www.googleapis.com/auth/spreadsheets']
 
     credentials = Credentials.from_service_account_file(
@@ -58,9 +58,6 @@ async def write_process_time_to_coll(new_time: float):
             new_time (float): Продолжительность обработчика отправки данных в Google Sheets.
     """
     db = await get_db()
-    stack = await db[PROCESSING_SHEETS_COLL].find_one({"_id": "1"})
-    if not stack:
-        await db[PROCESSING_SHEETS_COLL].insert_one({"_id": "1", "stack_field": [20]})
     await db[PROCESSING_SHEETS_COLL].update_one(
         {"_id": "1"},
         {
